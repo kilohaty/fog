@@ -31,7 +31,10 @@ export default class Fog {
   private fullImgLoaded: boolean = false;
   private hasLoadErrImg: boolean = false;
 
-  constructor(options: IFogOptions) {
+  constructor(options: IFogOptions | HTMLImageElement) {
+    if (options instanceof HTMLElement) {
+      options = {el: options};
+    }
     this.el = options.el;
     this.width = +this.el.getAttribute('data-width') || conf.width;
     this.height = +this.el.getAttribute('data-height') || conf.height;
