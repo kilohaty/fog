@@ -114,14 +114,18 @@ export default class Fog {
   }
 
   private onMiniImgLoad(img) {
+    this.miniImgLoaded = true;
+
     if (this.fullImgLoaded) {
       return;
     }
-    this.miniImgLoaded = true;
+
     const ctx = this.elCanvas.getContext('2d');
+    ctx.save();
     const radio = this.width / img.width;
     ctx.scale(radio, radio);
     ctx.drawImage(img, 0, 0);
+    ctx.restore();
     this.elCanvas.style.opacity = '1';
   }
 
