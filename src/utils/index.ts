@@ -3,6 +3,7 @@ let canvas: HTMLCanvasElement;
 function loadImage(src): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    img.crossOrigin = 'anonymous';
     img.onload = resolve.bind(null, img);
     img.onerror = reject;
     img.src = src;
