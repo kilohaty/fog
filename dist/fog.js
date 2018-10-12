@@ -11,6 +11,9 @@ var Fog = /** @class */ (function () {
         this.miniImgLoaded = false;
         this.fullImgLoaded = false;
         this.hasLoadErrImg = false;
+        if (options instanceof HTMLElement) {
+            options = { el: options };
+        }
         this.el = options.el;
         this.width = +this.el.getAttribute('data-width') || conf.width;
         this.height = +this.el.getAttribute('data-height') || conf.height;
@@ -71,14 +74,16 @@ var Fog = /** @class */ (function () {
         this.elDiv.appendChild(this.elCanvas);
     };
     Fog.prototype.onMiniImgLoad = function (img) {
+        this.miniImgLoaded = true;
         if (this.fullImgLoaded) {
             return;
         }
-        this.miniImgLoaded = true;
         var ctx = this.elCanvas.getContext('2d');
+        ctx.save();
         var radio = this.width / img.width;
         ctx.scale(radio, radio);
         ctx.drawImage(img, 0, 0);
+        ctx.restore();
         this.elCanvas.style.opacity = '1';
     };
     Fog.prototype.loadMiniImg = function () {

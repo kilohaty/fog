@@ -1,6 +1,6 @@
 {
   "name": "@kilohaty/fog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "lazy load library for images",
   "main": "dist/bundle/fog.js",
   "types": "dist/index.d.ts",

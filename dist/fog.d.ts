@@ -20,7 +20,7 @@ export default class Fog {
     private miniImgLoaded;
     private fullImgLoaded;
     private hasLoadErrImg;
-    constructor(options: IFogOptions);
+    constructor(options: IFogOptions | HTMLImageElement);
     private getMiniImgUrl;
     private createDiv;
     private createCanvas;

@@ -2,6 +2,7 @@ var canvas;
 function loadImage(src) {
     return new Promise(function (resolve, reject) {
         var img = new Image();
+        img.crossOrigin = 'anonymous';
         img.onload = resolve.bind(null, img);
         img.onerror = reject;
         img.src = src;
